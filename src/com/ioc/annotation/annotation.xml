@@ -7,6 +7,18 @@
    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
    http://www.springframework.org/schema/context 
    http://www.springframework.org/schema/context/spring-context-3.2.xsd">
-   
+
+	<bean name="car" class="com.ioc.annotation.Car">
+		<property name="price" value="300000"></property>
+		<property name="name" value="AAA"></property>
+	</bean>
+
+	<bean name="office" class="com.ioc.annotation.Office">
+	</bean>
+
+	<bean name="boss" class="com.ioc.annotation.Boss"></bean>
+
+	<context:annotation-config/>
+	<context:component-scan base-package="com.ioc.annotation"/>
 	
 </beans>

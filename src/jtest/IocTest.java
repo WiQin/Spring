@@ -1,6 +1,8 @@
 package jtest;
 
 import com.bean.LifeBean;
+import com.ioc.annotation.Boss;
+import com.ioc.event.RainEvent;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -255,7 +257,9 @@ public class IocTest {
 			String path = "com/ioc/event/event.xml";
 			ApplicationContext container = 
 					new ClassPathXmlApplicationContext(path);
-			
+
+			//发布事件
+			container.publishEvent(new RainEvent("rain"));
 			
 			
 		} catch (Exception e) {
@@ -270,7 +274,9 @@ public class IocTest {
 			String path = "com/ioc/annotation/annotation.xml";
 			ApplicationContext container = 
 					new ClassPathXmlApplicationContext(path);
-			
+			Boss boss = (Boss)container.getBean("boss");
+			((ClassPathXmlApplicationContext) container).destroy();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

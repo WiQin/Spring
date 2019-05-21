@@ -1,5 +1,8 @@
 package com.ioc.annotation;
 
+import org.springframework.stereotype.Component;
+
+@Component("office")
 public class Office {
 	private String num = "001";
 	

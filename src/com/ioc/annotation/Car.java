@@ -1,6 +1,10 @@
 package com.ioc.annotation;
 
-public class Car {
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.stereotype.Component;
+
+@Component("car")
+public class Car implements BeanNameAware {
 	private double price;
 	private String name;
 	
@@ -26,5 +30,10 @@ public class Car {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public void setBeanName(String s) {
+		System.out.println(s);
 	}
 }
