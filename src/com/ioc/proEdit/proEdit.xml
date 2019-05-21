@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<!-- 这个配置指明哪个类型对应哪个自定义编辑器 -->
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="com.ioc.proEdit.Address"	value="com.ioc.proEdit.AddressEditor"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean name="student" class="com.ioc.proEdit.Student">
+		<property name="id" value="12"></property>
+		<property name="name" value="aaa"></property>
+		<property name="age" value="16"></property>
+		<property name="gender" >
+			<value>true</value>
+		</property>
+		<property name="address">
+			<value>sef,aw,efv</value>
+		</property>
+	</bean>
+	
+</beans>

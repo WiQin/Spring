@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/com/ioc/annotation/annotation.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/autowired/autowired.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/collection/collection.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/constructor/constructor.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/event/event.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/extend/extends.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/imp/import.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/life/life.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/proEdit/proEdit.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/set/set.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/imp/student.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/imp/teacher.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/factory/extends.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/factory/factory.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/instanceFactory/factory.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/staticFactory/staticfactory.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jar" level="project" />
+  </component>
+</module>
