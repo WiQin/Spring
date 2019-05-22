@@ -917,6 +917,10 @@ AOP
     与静态代理类对照的是动态代理类，动态代理类的字节码在程序运行时由Java反射机制动态生成，无需程序员手工编写它的源代码。动态代理类不仅简化了编程工作，
 	而且提高了软件系统的可扩展性，因为Java 反射机制可以生成任意类型的动态代理类。java.lang.reflect 包下面的Proxy类和InvocationHandler 接口提供了生成
 	动态代理类的能力。
+	JDK的动态代理：实现同样的接口,能被重写的
+    	不写代理类，代理类由程序运行时动态生成
+    	java反射生成实现了同样接口的代理类
+    	Proxy,InvocationHandler
     例子：
     接口:
     public interface IStudentService {
@@ -1130,7 +1134,7 @@ AOP
 
 
 
-7  在Spring中，Advice是由spring中的几个接口来指定，主要有以下几种：
+8  在Spring中，Advice是由spring中的几个接口来指定，主要有以下几种：
 	1) Before Advice
 	public interface MethodBeforeAdvice extends BeforeAdvice {
 	    void before(Method m, Object[] args, Object target) throws Throwable;
@@ -1469,7 +1473,7 @@ AOP
 
 
 
-8  advisor  增强器
+9  advisor  增强器
    作用:筛选目标对象中要代理的方法,之前的advice是把目标对象中的所有方法全部都进行代理
    指定为advisor的接口为:
 	public interface PointcutAdvisor extends Advisor {
@@ -1541,7 +1545,7 @@ AOP
 	这个增强器的配置方式和上面的类似,不同之处在于可以利用setMappedNames方法之间注意要处理的方法名字
 
 
-9  AutoProxy 自动代理:DefaultAdvisorAutoProxyCreator类的使用
+10  AutoProxy 自动代理:DefaultAdvisorAutoProxyCreator类的使用
    使用原因:在配置文件中我们往往需要给很多个目标对象设置代理对象,那么上面例子的方式就需要每个目标对象的代理对象都需要配置一套类似的标签
    自动代理:可以用很少的配置为xml文件中的目标对象自动的生成对应的代理对象
 
@@ -1607,7 +1611,7 @@ AOP
      -->
 
 
-10  AutoProxyByName 通过名字进行自动代理:BeanNameAutoProxyCreator类的使用
+11  AutoProxyByName 通过名字进行自动代理:BeanNameAutoProxyCreator类的使用
     使用原因:虽然自动代理可以很方便的给xml文件中的目标对象设置对应的代理对象,但是并不是xml文件中的所有对象都是我们的目标对象,我们更想希望可以进一步筛选出某几个对象为我们的目标对象
     名字进行自动代理:解决了上面的问题,给我们提供了筛选目标对象的配置方式
 
@@ -1688,7 +1692,7 @@ AOP
      -->
 
 
-11 aop:config标签
+12 aop:config标签
    使用aop的专用标签来完成相关的配置.
    其中主要表现是使用AspectJ的expression的操作：
    execution(modifiers-pattern ret-type-pattern declaring-type-pattern name-pattern(param-pattern) throws-pattern)除了返回类型模式，名字模式和参数模式以外，所有的部分都是可选的。 返回类型模式决定了方法的返回类型必须依次匹配一个连接点。 你会使用的最频繁的返回类型模式是 *，它代表了匹配任意的返回类型。 一个全称限定的类型名将只会匹配返回给定类型的方法。名字模式匹配的是方法名。 你可以使用 * 通配符作为所有或者部分命名模式。 参数模式稍微有点复杂：() 匹配了一个不接受任何参数的方法， 而 (..) 匹配了一个接受任意数量参数的方法（零或者更多）。 模式 (*) 匹配了一个接受一个任何类型的参数的方法。 模式 (*,String) 匹配了一个接受两个参数的方法，第一个可以是任意类型，第二个则必须是String类型
@@ -1753,7 +1757,7 @@ AOP
 
 	 注意:<aop:config proxy-target-class="true"> 如果这样配置则是强制使用CGLIB方式进行代理
 
-12  在一个切面类中定个多个方法,根据xml文件的配置每个方法都可以织入到切入点的不同位置,并且advice是在aop的标签中进行配置,不需要再写对应的advice类了
+13  在一个切面类中定个多个方法,根据xml文件的配置每个方法都可以织入到切入点的不同位置,并且advice是在aop的标签中进行配置,不需要再写对应的advice类了
     例如:
 	//这个类相当于我们之前的切面类
 	//只不过这个切面类中有很多方法都可以织入到切入点上面
@@ -1831,7 +1835,7 @@ AOP
 	注意:<aop:config proxy-target-class="true"> 如果这样配置则是强制使用CGLIB方式进行代理
 
 
-13  使用注解配置AOP:其实就是在上面的类XmlHandler中加入上注解,然后去掉xml中的aop标签配置,这里把类改名为AnnotationHandler,
+14  使用注解配置AOP:其实就是在上面的类XmlHandler中加入上注解,然后去掉xml中的aop标签配置,这里把类改名为AnnotationHandler,
     例子:
 	@Component
 	@Aspect
