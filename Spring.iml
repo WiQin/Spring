@@ -16,10 +16,40 @@
           <file>file://$MODULE_DIR$/src/com/ioc/set/set.xml</file>
           <file>file://$MODULE_DIR$/src/com/ioc/imp/student.xml</file>
           <file>file://$MODULE_DIR$/src/com/ioc/imp/teacher.xml</file>
-          <file>file://$MODULE_DIR$/src/com/ioc/factory/extends.xml</file>
-          <file>file://$MODULE_DIR$/src/com/ioc/factory/factory.xml</file>
           <file>file://$MODULE_DIR$/src/com/ioc/instanceFactory/factory.xml</file>
           <file>file://$MODULE_DIR$/src/com/ioc/staticFactory/staticfactory.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/dProxy/beans.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/xml/xmlHandler.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/advisor/advisor.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/after/after.xml</file>
+        </fileset>
+        <fileset id="fileset2" name="Spring Application Context (2)" removed="false">
+          <file>file://$MODULE_DIR$/src/com/aop/advisor/advisor.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/after/after.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/annotation/annotation.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/annotation/annotation.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/aopConfig/aopconfig.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/around/around.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/autoProxy/autoProxy.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/autoProxyByName/autoProxyByName.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/autowired/autowired.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/dProxy/beans.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/before/before.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/collection/collection.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/constructor/constructor.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/event/event.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/extend/extends.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/instanceFactory/factory.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/imp/import.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/factory/instancefactory.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/life/life.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/proEdit/proEdit.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/set/set.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/staticFactory/staticfactory.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/imp/student.xml</file>
+          <file>file://$MODULE_DIR$/src/com/ioc/imp/teacher.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/throwException/throwing.xml</file>
+          <file>file://$MODULE_DIR$/src/com/aop/xml/xmlHandler.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -32,5 +62,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jar" level="project" />
+    <orderEntry type="library" name="aspectjrt" level="project" />
   </component>
 </module>

@@ -3,8 +3,8 @@ package com.aop.service;
 
 import javax.annotation.Resource;
 
-import com.briup.aop.dao.AccountDao;
-import com.briup.aop.pojo.Account;
+import com.aop.dao.AccountDao;
+import com.aop.pojo.Account;
 
 //目标对象(target)
 public class AccountServiceImpl implements IAccountService{

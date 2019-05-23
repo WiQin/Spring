@@ -8,38 +8,38 @@ xmlns:context="http://www.springframework.org/schema/context"
    http://www.springframework.org/schema/context 
    http://www.springframework.org/schema/context/spring-context-3.2.xsd">
  	 <!-- 配置账户对象 -->
-	 <bean name="account" class="com.briup.aop.pojo.Account">
+	 <bean name="account" class="com.aop.pojo.Account">
 	 	<property name="id" value="10"/>
 	 	<property name="name" value="terry"/>
 	 	<property name="balance" value="10000"/>
 	 </bean>
 	 
 	 <!-- 配置dao层对象 -->
-	 <bean id="dao" 
-	 class="com.briup.aop.dao.AccountDaoImpl"/>
+	 <bean name="dao"
+	 class="com.aop.dao.AccountDaoImpl"/>
 	 
 	 <!-- 配置service层对象 也是我们例子中的目标对象-->
-	 <bean id="target" 
-	 class="com.briup.aop.service.AccountServiceImpl">
+	 <bean name="target"
+	 class="com.aop.service.AccountServiceImpl">
 	 	<property name="accountDao" ref="dao"/>
 	 	<property name="account" ref="account"/>
 	 </bean>
 	 
 	 <!-- 配置handler对象 -->
-	 <bean id="handler" class="com.briup.aop.dProxy.LogHandler">
- 		<property name="target">
- 			<ref bean="target"/>
+	 <bean id="handler" class="com.aop.dProxy.LogHandler">
+ 		<property name="target" ref="target">
+
  		</property>
 	 </bean>
 	 
 	 <!-- 配置产生代理对象的工厂类 -->
-	 <bean id="proxy" class="com.briup.aop.dProxy.ProxyFactoryBean">
+	 <bean name="proxy" class="com.aop.dProxy.ProxyFactoryBean">
 	 	<!-- 注入目标对象 -->
 	 	<property name="target" ref="target"/>
 	 	<!-- 注入目标对象实现的接口 -->
 	 	<property name="interfaces">
 	 		<list>
-	 			<value>com.briup.aop.service.IAccountService</value>
+	 			<value>com.aop.service.IAccountService</value>
 	 		</list>
 	 	</property>
 	 	<!-- 注入handler对象 -->

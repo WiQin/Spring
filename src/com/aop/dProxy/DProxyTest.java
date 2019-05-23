@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.briup.aop.service.IAccountService;
+import com.aop.service.IAccountService;
 
 @SuppressWarnings("all")
 public class DProxyTest {
@@ -14,7 +14,7 @@ public class DProxyTest {
 		try {
 			ApplicationContext ctx = 
 				new ClassPathXmlApplicationContext
-				("com/briup/aop/dProxy/beans.xml");
+				("com/aop/dProxy/beans.xml");
 			
 			//其实这个拿到的名字为service的对象就是代理对象proxy
 			IAccountService service = 

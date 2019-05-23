@@ -1081,7 +1081,7 @@ AOP
    后置代理
 
 
-6  Spring实现AOP(Aspect Oriented Programming)是依赖JDK动态代理和CGLIB代理(不同情况spring会自己选择一种方式)。
+5  Spring实现AOP(Aspect Oriented Programming)是依赖JDK动态代理和CGLIB代理(不同情况spring会自己选择一种方式)。
     JDK动态代理和CGLIB代理的对比:
     JDK动态代理：其代理对象必须是某个接口的实现，它是通过在运行期间创建一个接口的实现类来完成对目标对象的代理。
     CGLIB代理：实现原理类似于JDK动态代理，只是它在运行期间生成的代理对象是针对目标类扩展的子类。CGLIB是高效的代码生成包，底层是依靠ASM（开源的java字节码编辑类库）操作字节码实现的。
@@ -1092,19 +1092,19 @@ AOP
 	spring会自动在JDK动态代理和CGLIB之间自动选择;
 
 
-7  认识AOP中的一些基本概念,然后在一个一个的例子中,不断的加强对这些概念的理解,同时要能自己表述出每个概念的含义
+6  认识AOP中的一些基本概念,然后在一个一个的例子中,不断的加强对这些概念的理解,同时要能自己表述出每个概念的含义
 
 	AOP  		面向切面编程
 
-	aspect		切面/切面类
+	aspect		切面/切面类，要给代理类添加的操作
 
-	joinPoint	连接点
+	joinPoint	连接点，被代理的方法
 			在spring的aop中只有 类中的方法 可以做连接点,每一个方法都可以是一个连接点.
 
 	pointCut	切入点
 			一组连接点的集合
 
-	advice		通知/拦截器
+	advice		通知/拦截器  拦截器携带着切面类织入到切入点上
 			用来控制切面类将来到底是织入到切入点的前面、后面或者是抛异常的时候。
 
 	adivsor		增强器
@@ -1134,7 +1134,7 @@ AOP
 
 
 
-8  在Spring中，Advice是由spring中的几个接口来指定，主要有以下几种：
+7  在Spring中，Advice是由spring中的几个接口来指定，主要有以下几种：
 	1) Before Advice
 	public interface MethodBeforeAdvice extends BeforeAdvice {
 	    void before(Method m, Object[] args, Object target) throws Throwable;
@@ -1473,7 +1473,7 @@ AOP
 
 
 
-9  advisor  增强器
+8  advisor  增强器
    作用:筛选目标对象中要代理的方法,之前的advice是把目标对象中的所有方法全部都进行代理
    指定为advisor的接口为:
 	public interface PointcutAdvisor extends Advisor {
@@ -1545,7 +1545,7 @@ AOP
 	这个增强器的配置方式和上面的类似,不同之处在于可以利用setMappedNames方法之间注意要处理的方法名字
 
 
-10  AutoProxy 自动代理:DefaultAdvisorAutoProxyCreator类的使用
+9  AutoProxy 自动代理:DefaultAdvisorAutoProxyCreator类的使用
    使用原因:在配置文件中我们往往需要给很多个目标对象设置代理对象,那么上面例子的方式就需要每个目标对象的代理对象都需要配置一套类似的标签
    自动代理:可以用很少的配置为xml文件中的目标对象自动的生成对应的代理对象
 
@@ -1611,7 +1611,7 @@ AOP
      -->
 
 
-11  AutoProxyByName 通过名字进行自动代理:BeanNameAutoProxyCreator类的使用
+10  AutoProxyByName 通过名字进行自动代理:BeanNameAutoProxyCreator类的使用
     使用原因:虽然自动代理可以很方便的给xml文件中的目标对象设置对应的代理对象,但是并不是xml文件中的所有对象都是我们的目标对象,我们更想希望可以进一步筛选出某几个对象为我们的目标对象
     名字进行自动代理:解决了上面的问题,给我们提供了筛选目标对象的配置方式
 
@@ -1692,7 +1692,7 @@ AOP
      -->
 
 
-12 aop:config标签
+11 aop:config标签
    使用aop的专用标签来完成相关的配置.
    其中主要表现是使用AspectJ的expression的操作：
    execution(modifiers-pattern ret-type-pattern declaring-type-pattern name-pattern(param-pattern) throws-pattern)除了返回类型模式，名字模式和参数模式以外，所有的部分都是可选的。 返回类型模式决定了方法的返回类型必须依次匹配一个连接点。 你会使用的最频繁的返回类型模式是 *，它代表了匹配任意的返回类型。 一个全称限定的类型名将只会匹配返回给定类型的方法。名字模式匹配的是方法名。 你可以使用 * 通配符作为所有或者部分命名模式。 参数模式稍微有点复杂：() 匹配了一个不接受任何参数的方法， 而 (..) 匹配了一个接受任意数量参数的方法（零或者更多）。 模式 (*) 匹配了一个接受一个任何类型的参数的方法。 模式 (*,String) 匹配了一个接受两个参数的方法，第一个可以是任意类型，第二个则必须是String类型
@@ -1757,7 +1757,7 @@ AOP
 
 	 注意:<aop:config proxy-target-class="true"> 如果这样配置则是强制使用CGLIB方式进行代理
 
-13  在一个切面类中定个多个方法,根据xml文件的配置每个方法都可以织入到切入点的不同位置,并且advice是在aop的标签中进行配置,不需要再写对应的advice类了
+12  在一个切面类中定个多个方法,根据xml文件的配置每个方法都可以织入到切入点的不同位置,并且advice是在aop的标签中进行配置,不需要再写对应的advice类了
     例如:
 	//这个类相当于我们之前的切面类
 	//只不过这个切面类中有很多方法都可以织入到切入点上面
@@ -1835,7 +1835,7 @@ AOP
 	注意:<aop:config proxy-target-class="true"> 如果这样配置则是强制使用CGLIB方式进行代理
 
 
-14  使用注解配置AOP:其实就是在上面的类XmlHandler中加入上注解,然后去掉xml中的aop标签配置,这里把类改名为AnnotationHandler,
+13  使用注解配置AOP:其实就是在上面的类XmlHandler中加入上注解,然后去掉xml中的aop标签配置,这里把类改名为AnnotationHandler,
     例子:
 	@Component
 	@Aspect

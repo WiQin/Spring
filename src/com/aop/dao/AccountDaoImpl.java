@@ -1,7 +1,7 @@
 package com.aop.dao;
 
 
-import com.briup.aop.pojo.Account;
+import com.aop.pojo.Account;
 
 public class AccountDaoImpl implements AccountDao{
 	
