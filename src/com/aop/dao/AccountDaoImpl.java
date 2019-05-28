@@ -2,7 +2,9 @@ package com.aop.dao;
 
 
 import com.aop.pojo.Account;
+import org.springframework.stereotype.Component;
 
+@Component("dao")
 public class AccountDaoImpl implements AccountDao{
 	
 	//取款

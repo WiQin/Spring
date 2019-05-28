@@ -10,6 +10,50 @@
            http://www.springframework.org/schema/context/spring-context-3.2.xsd
            http://www.springframework.org/schema/aop
            http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
-    
+
+	<!--配置切面类-->
+	<bean name="logger" class="com.aop.aspect.MyLogger">
+	</bean>
+
+	<!--配置advice-->
+	<bean name="beforeAdvice" class="com.aop.before.BeforeAdvice">
+		<!--注入切面类-->
+		<property name="logger" ref="logger"></property>
+	</bean>
+
+	<!--注入账户-->
+	<bean name="account" class="com.aop.pojo.Account">
+		<property name="id" value="1"></property>
+		<property name="name" value="1"></property>
+		<property name="balance" value="1"></property>
+	</bean>
+
+	<!--dao层对象-->
+	<bean name="accountDao" class="com.aop.dao.AccountDaoImpl">
+
+	</bean>
+
+
+	<!--配置目标对象[service层的实现类对象]-->
+	<bean name="target" class="com.aop.service.AccountServiceImpl">
+		<!--注入账号-->
+		<property name="account" ref="account"></property>
+		<!--注入dao层对象-->
+		<property name="accountDao" ref="accountDao"></property>
+	</bean>
+
+
+	<!--aopp配置-->
+	<aop:config proxy-target-class="true">
+		<!--定义切入点-->
+		<aop:pointcut id="myPointCut" expression="execution(* com.aop.service.*.*(..))"></aop:pointcut>
+		<aop:pointcut id="myPointCut2" expression="execution(* com.aop.dao.*.*(..))"></aop:pointcut>
+		<!--声明拦截器【已注入切面】要织入到哪个切入点-->
+		<aop:advisor advice-ref="beforeAdvice" pointcut-ref="myPointCut"></aop:advisor>
+		<aop:advisor advice-ref="beforeAdvice" pointcut-ref="myPointCut2"></aop:advisor>
+
+		
+
+	</aop:config>
 	
 </beans>

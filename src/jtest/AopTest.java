@@ -1,5 +1,6 @@
 package jtest;
 
+import com.aop.service.AccountServiceImpl;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -154,8 +155,21 @@ public class AopTest {
 	public void aop_aopconfig() {
 
 		try {
-			String path = "com/briup/aop/aopConfig/aopconfig.xml";
+			String path = "com/aop/aopConfig/aopconfig.xml";
 			ApplicationContext container = new ClassPathXmlApplicationContext(path);
+
+			IAccountService service = (IAccountService) container.getBean("target");
+			service.bankAction();
+			System.out.println(service.getClass());
+
+			((AccountServiceImpl)service).getAccount();
+
+			//dao包被代理
+			System.out.println(container.getBean("dao").getClass());
+
+
+
+
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -167,8 +181,12 @@ public class AopTest {
 	public void aop_xml() {
 
 		try {
-			String path = "com/briup/aop/xml/xmlHandler.xml";
+			String path = "com/aop/xml/xmlHandler.xml";
 			ApplicationContext container = new ClassPathXmlApplicationContext(path);
+
+			IAccountService target = (IAccountService) container.getBean("target");
+			target.bankAction();
+			System.out.println(target.getClass());
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -180,8 +198,12 @@ public class AopTest {
 	public void aop_annotation() {
 
 		try {
-			String path = "com/briup/aop/annotation/annotation.xml";
+			String path = "com/aop/annotation/annotation.xml";
 			ApplicationContext container = new ClassPathXmlApplicationContext(path);
+
+			IAccountService service = (IAccountService) container.getBean("service");
+			service.bankAction();
+
 
 		} catch (Exception e) {
 			e.printStackTrace();

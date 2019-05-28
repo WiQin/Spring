@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- com.briup.tran.dao.AccountDao是我们定义接口的全限定名字 这样就可以使用接口调用映射的SQL语句了 这个名字一定要和接口对应上-->
+<mapper namespace="com.briup.tran.dao.AccountDao">
+	
+	<insert id="save" parameterType="Account">
+		insert into
+		t_account(id,name,balance) 
+		values(#{id},#{name},#{balance}) 
+	</insert>
+	
+	<update id="update" parameterType="Account">
+		update t_account
+		set
+		name=#{name},
+		balance=#{balance}
+		where id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="Account">
+		delete from t_account where id=#{id}
+	</delete>
+	
+</mapper>

@@ -1,15 +1,22 @@
-package com.aop.pojo;
+package com.tran;
 
-import org.springframework.stereotype.Component;
+import java.io.Serializable;
 
-@Component
-//银行账户
-public class Account {
+public class Account implements Serializable{
+
+	private static final long serialVersionUID = -1534917570281940275L;
+	
 	private int id;
 	private String name;
-	//余额
 	private double balance;
+	public Account() {}
 	
+	public Account(int id, String name, double balance) {
+		this.id = id;
+		this.name = name;
+		this.balance = balance;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -5,10 +5,16 @@ import javax.annotation.Resource;
 
 import com.aop.dao.AccountDao;
 import com.aop.pojo.Account;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component("service")
 //目标对象(target)
 public class AccountServiceImpl implements IAccountService{
+	@Autowired
 	private AccountDao accountDao;
+
+	@Autowired
 	private Account account;
 	
 	//转账
